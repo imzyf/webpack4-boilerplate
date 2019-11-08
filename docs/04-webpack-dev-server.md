@@ -1,5 +1,7 @@
 # webpack-dev-server
 
+> https://github.com/webpack/webpack-dev-server
+
 ```bash
 npm install webpack-dev-server -D
 ```
@@ -8,23 +10,33 @@ webpack-dev-server 的基本配置项：
 
 - color（CLI only）console 中打印彩色日志。
 - historyApiFallback 任意的 404 响应都被替代为 index.html。启用该配置后，项目中任何找不到的链接都会被强制链接到 index.html 页面。
-- host 指定一个 host，默认是 localhost。如果你希望服务器外部可以访问，指定如下：host: "0.0.0.0"。比如你用手机通过 IP 访问，也可设置为本机局域网 IP。
 - hot 启用 Webpack 的模块热替换特性。和 react 的热替换搭配使用。
-- port 配置要监听的端口。默认就是 8080 端口，可自行修改。
 - progress（CLI only）将编译进度输出到控制台。
 - overlay 在浏览页面输出报错信息。
+
+## 获取局域网 IP
+
+移动端开发时，当需要在手机上查看效果时，需要通过局域网 IP 来访问网站。
+
+```bash
+npm install ip -D
+```
 
 在 config 创建 dev.server.js：
 
 ```js
 const path = require("path");
+const ip = require("ip").address();
 
 module.exports = {
   port: 8070,
   contentBase: path.resolve(__dirname, "../dist"),
   historyApiFallback: true,
-  host: "0.0.0.0",
-  overlay: true
+  host: ip,
+  overlay: true,
+  after(app, server, compiler) {
+    console.log(`\n\n服务器地址 http://${ip}:${this.port}\n`);
+  }
 };
 ```
 

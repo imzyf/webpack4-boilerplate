@@ -1,5 +1,7 @@
 # html-webpack-plugin
 
+> https://github.com/jantimon/html-webpack-plugin
+
 ```bash
 npm install html-webpack-plugin -D
 ```
