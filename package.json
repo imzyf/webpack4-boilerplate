@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "webpack --config config/webpack.dev.config.js",
-    "server": "webpack-dev-server --config config/webpack.dev.config.js --color --progress"
+    "start": "webpack-dev-server --config config/webpack.dev.config.js --color --progress"
   },
   "repository": {
     "type": "git",
@@ -22,8 +22,16 @@
   },
   "homepage": "https://github.com/imzyf/webpack4-boilerplate#readme",
   "devDependencies": {
+    "css-loader": "^3.2.0",
+    "cssnano": "^4.1.10",
     "html-webpack-plugin": "^3.2.0",
     "ip": "^1.1.5",
+    "node-sass": "^4.13.0",
+    "postcss-import": "^12.0.1",
+    "postcss-loader": "^3.0.0",
+    "postcss-preset-env": "^6.7.0",
+    "sass-loader": "^8.0.0",
+    "style-loader": "^1.0.0",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.9.0"

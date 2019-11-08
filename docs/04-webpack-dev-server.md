@@ -55,7 +55,11 @@ module.exports = {
 修改 package.json 文件：
 
 ```json
-"server": "webpack-dev-server --config config/webpack.dev.config.js --color --progress"
+"start": "webpack-dev-server --config config/webpack.dev.config.js --color --progress"
+```
+
+```bash
+npm start
 ```
 
 ## 最终

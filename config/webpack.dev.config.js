@@ -21,5 +21,26 @@ module.exports = {
       title: "home - webpack" // 配置生成页面的标题
     })
   ],
-  devServer
+  devServer,
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          "style-loader",
+          { loader: "css-loader", options: { importLoaders: 1 } },
+          "postcss-loader"
+        ]
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          "style-loader",
+          { loader: "css-loader", options: { importLoaders: 1 } },
+          "postcss-loader",
+          "sass-loader"
+        ]
+      }
+    ]
+  }
 };
