@@ -25,14 +25,17 @@ npm install html-webpack-plugin -D
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 ...
-// 插件配置项
-plugins: [
-    new HtmlWebpackPlugin({
-        filename: 'index.html', // 输出文件的名称
-        template: path.resolve(__dirname, '../src/index.html'),// 模板文件的路径
-        title:'home - webpack',// 配置生成页面的标题
-    }),
-]
+module.exports = {
+  ...
+  // 插件配置项
+  plugins: [
+      new HtmlWebpackPlugin({
+          filename: 'index.html', // 输出文件的名称
+          template: path.resolve(__dirname, '../src/index.html'),// 模板文件的路径
+          title:'home - webpack',// 配置生成页面的标题
+      }),
+  ]
+}
 ```
 
 ## 最终

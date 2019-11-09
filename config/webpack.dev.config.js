@@ -1,5 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const devServer = require("./dev.server.js");
 
 module.exports = {
   // 入口文件配置项
@@ -19,5 +20,6 @@ module.exports = {
       template: path.resolve(__dirname, "../src/index.html"), // 模板文件的路径
       title: "home - webpack" // 配置生成页面的标题
     })
-  ]
+  ],
+  devServer
 };
