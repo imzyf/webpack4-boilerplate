@@ -1,0 +1,27 @@
+{
+  "name": "webpack4-boilerplate",
+  "version": "1.0.0",
+  "description": "配置一份 Webpack4 + Vue2.6 的模板项目。",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "dev": "webpack --config config/webpack.dev.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/imzyf/webpack4-boilerplate.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/imzyf/webpack4-boilerplate/issues"
+  },
+  "homepage": "https://github.com/imzyf/webpack4-boilerplate#readme",
+  "devDependencies": {
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10"
+  }
+}
