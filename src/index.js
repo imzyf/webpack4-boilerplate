@@ -2,6 +2,10 @@ import "./css/reset.css";
 import "./scss/public.scss";
 import bgImg from "./images/spikes.png";
 
+if (module.hot) {
+  module.hot.accept();
+}
+
 var func = str => {
   document.getElementById("app").innerHTML = str;
 };
