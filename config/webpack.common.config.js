@@ -1,5 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const NODE_ENV = process.env.NODE_ENV;
 
 module.exports = {
   // 入口文件配置项
@@ -35,7 +37,10 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          "style-loader",
+          {
+            loader:
+              NODE_ENV === "dev" ? "style-loader" : MiniCssExtractPlugin.loader
+          },
           { loader: "css-loader", options: { importLoaders: 1 } },
           "postcss-loader"
         ]
@@ -43,7 +48,10 @@ module.exports = {
       {
         test: /\.scss$/,
         use: [
-          "style-loader",
+          {
+            loader:
+              NODE_ENV === "dev" ? "style-loader" : MiniCssExtractPlugin.loader
+          },
           { loader: "css-loader", options: { importLoaders: 1 } },
           "postcss-loader",
           "sass-loader"

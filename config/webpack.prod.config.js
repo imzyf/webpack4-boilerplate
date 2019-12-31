@@ -1,6 +1,7 @@
 const merge = require("webpack-merge");
 const common = require("./webpack.common.config.js");
 const webpack = require("webpack");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = merge(common, {
   mode: "production",
@@ -9,7 +10,14 @@ module.exports = merge(common, {
     filename: "[name]@[chunkhash].js"
   },
   // 第三方插件
-  plugins: [new webpack.HashedModuleIdsPlugin()],
+  plugins: [
+    new webpack.HashedModuleIdsPlugin(),
+    // 分离 CSS
+    new MiniCssExtractPlugin({
+      filename: "css/[name].[hash].css",
+      chunkFilename: "css/[name].[hash].css"
+    })
+  ],
   // webpack4.x 新增配置项
   optimization: {
     splitChunks: {
