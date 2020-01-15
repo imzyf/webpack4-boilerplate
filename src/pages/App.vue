@@ -1,7 +1,12 @@
 <template>
   <el-container>
-    <el-header>Header</el-header>
-    <el-main>Main</el-main>
+    <el-header>
+      <router-link to="/">首页</router-link>
+      <router-link to="/setting">设置</router-link>
+    </el-header>
+    <el-main>
+      <router-view />
+    </el-main>
     <el-footer>Footer</el-footer>
   </el-container>
 </template>
