@@ -15,5 +15,12 @@ module.exports = {
   },
   plugins: ["vue"],
   rules: {},
-  globals: {}
+  globals: {},
+  settings: {
+    "import/resolver": {
+      webpack: {
+        config: "./config/webpack.common.config.js"
+      }
+    }
+  }
 };

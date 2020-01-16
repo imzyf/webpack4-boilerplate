@@ -8,11 +8,16 @@ npm install eslint --save-dev
 npx eslint --init
 ```
 
+```bash
+npm i eslint-import-resolver-webpack -D
+```
+
 package.json 被修改的地方：
 
 ```json
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-import-resolver-webpack": "^0.12.1",
     "eslint-loader": "^3.0.3",
     "eslint-plugin-import": "^2.20.0",
     "eslint-plugin-vue": "^6.1.2",
@@ -37,9 +42,45 @@ module.exports = {
     sourceType: "module"
   },
   plugins: ["vue"],
-  rules: {}
+  rules: {},
+  globals: {},
+  settings: {
+    "import/resolver": {
+      webpack: {
+        config: "./config/webpack.dev.config.js"
+      }
+    }
+  }
 };
 ```
+
+---
+
+其中遇到的一个错误：
+
+```bash
+error: Missing file extension for "@/components/..." (import/extensions) at ...
+```
+
+错误原因是：eslint-loader 不能解析 @，解决方案：
+
+```bash
+npm i eslint-import-resolver-webpack -D
+```
+
+修改 .eslintrc.js 设置如下：
+
+```js
+  'settings': {
+    "import/resolver": {
+      webpack: {
+        config: "./config/webpack.common.config.js"
+      }
+    }
+  }
+```
+
+---
 
 创建 .eslintignore：
 
