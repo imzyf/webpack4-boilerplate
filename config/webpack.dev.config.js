@@ -2,6 +2,8 @@ const merge = require("webpack-merge");
 const common = require("./webpack.common.config.js");
 const devServer = require("./dev.server.js");
 const webpack = require("webpack");
+const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
+  .BundleAnalyzerPlugin;
 
 module.exports = merge(common, {
   mode: "development",
@@ -15,8 +17,7 @@ module.exports = merge(common, {
   // 第三方插件
   plugins: [
     // 模块热更新 使用
-    new webpack.HotModuleReplacementPlugin()
-    // 分析包
-    // new BundleAnalyzerPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+    new BundleAnalyzerPlugin()
   ]
 });

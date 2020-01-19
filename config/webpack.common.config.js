@@ -3,6 +3,8 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const NODE_ENV = process.env.NODE_ENV;
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
+const webpack = require("webpack");
 
 module.exports = {
   // 入口文件配置项
@@ -15,12 +17,20 @@ module.exports = {
   },
   // 插件配置项
   plugins: [
+    new webpack.ProgressPlugin(),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       filename: "index.html", // 输出文件的名称
       template: path.resolve(__dirname, "../src/index.html"), // 模板文件的路径
       title: "home - webpack" // 配置生成页面的标题
-    })
+    }),
+    new CopyPlugin([
+      {
+        from: "static",
+        to: "static",
+        ignore: [".DS_Store"]
+      }
+    ])
   ],
 
   module: {
