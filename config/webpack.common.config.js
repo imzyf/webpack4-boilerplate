@@ -6,6 +6,7 @@ const { NODE_ENV } = process.env;
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack');
+const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = {
   // 入口文件配置项
@@ -20,6 +21,7 @@ module.exports = {
   plugins: [
     new webpack.ProgressPlugin(),
     new CleanWebpackPlugin(),
+    new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
       filename: 'index.html', // 输出文件的名称
       template: path.resolve(__dirname, '../src/index.html'), // 模板文件的路径
@@ -73,6 +75,10 @@ module.exports = {
         ],
       },
       {
+        test: /\.vue$/,
+        loader: 'vue-loader',
+      },
+      {
         test: /\.(png|jp?g|gif|svg)$/,
         use: [
           {
@@ -87,6 +93,7 @@ module.exports = {
       },
       {
         test: /\.html$/,
+        exclude: /src\/index.html/,
         use: [
           {
             loader: 'html-loader',

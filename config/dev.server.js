@@ -5,7 +5,7 @@ module.exports = {
   port: 8070,
   contentBase: path.resolve(__dirname, '../dist'),
   historyApiFallback: true,
-  host: ip,
+  // host: ip,
   overlay: true,
   hot: true,
   inline: true,
