@@ -22,6 +22,21 @@ module.exports = merge(common, {
   optimization: {
     splitChunks: {
       chunks: 'all',
+      cacheGroups: {
+        vendors: {
+          test: /node_modules\//,
+          name: 'vendor',
+          priority: 10,
+          enforce: true,
+          chunks: 'initial', // 只对入口文件处理
+        },
+        commons: {
+          minChunks: 2, // 最少有两个文件共用的代码
+          name: 'commons',
+          enforce: true,
+          chunks: 'all', // 针对所有文件
+        },
+      },
     },
     runtimeChunk: {
       name: (entrypoint) => `runtime~${entrypoint.name}`,
